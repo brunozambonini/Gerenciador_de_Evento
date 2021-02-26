@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Gerenciador de Pessoas</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container my-2">
+
+		<th:block th:include="/navbar"></th:block>
+
+		<h1>Detalhes</h1>
+		<hr>
+		<h2>Veja os detalhes e edite</h2>
+
+		<form action="#" th:action="@{/salvarPessoa}" th:object="${pessoa}"
+			method="POST">
+			<input type="hidden" th:field="*{id}" />
+			<div class="form-group">
+
+				<label for="formGroupExampleInput">Nome</label> <input type="text"
+					class="form-control" id="formGroupExampleInput" th:field="*{nome}"
+					required>
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput2">Sobrenome</label> <input
+					type="text" class="form-control" id="formGroupExampleInput2"
+					th:field="*{sobrenome}" required>
+			</div>
+
+			<th:block th:include="/mensagem_validacao"></th:block>
+
+			<div class="row">
+				<div class="col">
+					<label for="sala1">Primeira Sala</label> <select name="sala1"
+						class="form-control">
+						<option th:text="${salaAtual1.nome}" th:value="${salaAtual1.id}">
+						<option th:each="sala: ${listaSalas}" th:text="${sala.nome}"
+							th:value="${sala.id}" />
+					</select>
+				</div>
+				<div class="col">
+					<label for="sala2">Segunda Sala</label> <select name="sala2"
+						class="form-control">
+						<option th:text="${salaAtual2.nome}" th:value="${salaAtual2.id}">
+						<option th:each="sala: ${listaSalas}" th:text="${sala.nome}"
+							th:value="${sala.id}" />
+					</select>
+				</div>
+			</div>
+
+			<p>
+			<p>
+			<div class="row">
+				<div class="col">
+					<label for="espacoCafe1">Primeiro Intervalo</label> <select
+						name="espacoCafe1" class="form-control">
+						<option th:text="${espacoCafeAtual1.nome}"
+							th:value="${espacoCafeAtual1.id}">
+						<option th:each="espacoCafe: ${listaEspacoCafes}"
+							th:text="${espacoCafe.nome}" th:value="${espacoCafe.id}" />
+					</select>
+				</div>
+				<div class="col">
+					<label for="espacoCafe2">Segundo Intervalo</label> <select
+						name="espacoCafe2" class="form-control">
+						<option th:text="${espacoCafeAtual2.nome}"
+							th:value="${espacoCafeAtual2.id}">
+						<option th:each="espacoCafe: ${listaEspacoCafes}"
+							th:text="${espacoCafe.nome}" th:value="${espacoCafe.id}" />
+					</select>
+				</div>
+			</div>
+			
+			<hr>
+
+			<button type="submit" class="btn btn-success">Atualizar</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/listaPessoas}" class="btn btn-link"> Voltar </a>
+	</div>
+</body>
+</html>

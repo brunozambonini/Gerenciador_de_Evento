@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<title>Gerenciador de Pessoas</title>
+</head>
+<body>
+	<div class="container my-2">
+
+		<th:block th:include="/navbar"></th:block>
+
+		<h1>Lista de pessoas</h1>
+	
+		<div class="row justify-content-start">
+			<div class="col-2">
+				<a th:href="@{/novaPessoaForm}" class="btn btn-dark">Nova Pessoa</a>
+			</div>
+			<div class="col-2">
+				<a th:href="@{/distribuirForm}" class="btn btn-dark">Distribuir</a>
+			</div>
+			<div class="col-2">
+				<a th:href="@{/resetarPessoasAlocadas}" class="btn btn-dark">Resetar Alocações</a>
+			</div>
+		</div>
+		
+		<p>
+		
+		<th:block th:include="/mensagemInfo"></th:block>
+		
+		<p>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Nome</th>
+					<th scope="col">Sobrenome</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pessoa : ${listaPessoas}">
+					<td th:text="${pessoa.nome}"></td>
+					<td th:text="${pessoa.sobrenome}"></td>
+					<td style="width: 200px"><a
+						th:href="@{/formUpdate/{id}(id=${pessoa.id})}"
+						class="btn btn-success"> Atualizar </a> <a
+						th:href="@{/deletePessoa/{id}(id=${pessoa.id})}"
+						class="btn btn-danger"> Deletar </a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

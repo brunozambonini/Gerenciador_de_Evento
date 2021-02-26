@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<title>Gerenciador de Salas</title>
+</head>
+<body>
+
+	<div class="container my-2">
+
+		<th:block th:include="/navbar"></th:block>
+
+		<h1>Registre uma nova sala</h1>
+		<hr>
+		<form action="#" th:action="@{salvarSala}" th:object="${sala}"
+			method="POST">
+			<div class="form-group">
+				<label for="formGroupExampleInput">Nome</label> <input type="text"
+					class="form-control" id="formGroupExampleInput" th:field="*{nome}"
+					placeholder="Nome da sala" required>
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput2">Lotação</label> <input
+					type="number" class="form-control" id="formGroupExampleInput2"
+					th:field="*{lotacao}" placeholder="Lotação da sala" required>
+			</div>
+			<button type="submit" class="btn btn-success">Salvar</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/listaSalas}" class="btn btn-link">Voltar</a>
+	</div>
+</body>
+</html>

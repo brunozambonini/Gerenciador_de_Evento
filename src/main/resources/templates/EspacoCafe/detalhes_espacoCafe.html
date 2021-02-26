@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<title>Gerenciador de Espaços para Café</title>
+</head>
+<body>
+	<div class="container my-2">
+
+		<th:block th:include="/navbar"></th:block>
+
+		<h1>Detalhes do espaço</h1>
+		<hr>
+		<h2>Veja os detalhes do espaço e edite</h2>
+
+		<form action="#" th:action="@{/salvarEspacoCafe}"
+			th:object="${espacoCafe}" method="POST">
+			<input type="hidden" th:field="*{id}" />
+			<div class="form-group">
+
+				<label for="formGroupExampleInput">Nome</label> <input type="text"
+					class="form-control" id="formGroupExampleInput" th:field="*{nome}"
+					required>
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput2">Lotação</label> <input
+					type="number" class="form-control" id="formGroupExampleInput2"
+					th:field="*{lotacao}" required>
+			</div>
+			<button type="submit" class="btn btn-success">Atualizar</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/listaSalas}" class="btn btn-link"> Voltar </a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<title>Gerenciador de Pessoas</title>
+</head>
+<body>
+
+	<div class="container my-2">
+
+		<th:block th:include="/navbar"></th:block>
+
+		<h1>Distribuir as pessoas entre as salas e espaços de café:</h1>
+		<hr>
+		<form action="#" th:action="@{distribuir}" method="POST">
+			<th:block th:include="/mensagem_validacao"></th:block>
+			<div class="row">
+				<div class="col">
+					<label for="sala1">Primeira Sala</label> <select name="sala1"
+						class="form-control">
+						<option value="">Choose..</option>
+						<option th:each="sala: ${listaSalas}" th:text="${sala.nome}"
+							th:value="${sala.id}" />
+					</select>
+				</div>
+				<div class="col">
+					<label for="sala2">Segunda Sala</label> <select name="sala2"
+						class="form-control">
+						<option value="">Choose..</option>
+						<option th:each="sala: ${listaSalas}" th:text="${sala.nome}"
+							th:value="${sala.id}" />
+					</select>
+				</div>
+			</div>
+			<p>
+			<p>
+			<div class="row">
+				<div class="col">
+					<label for="espacoCafe1">Primeiro intervalo</label> <select
+						name="espacoCafe1" class="form-control">
+						<option value="">Choose..</option>
+						<option th:each="espacoCafe: ${listaEspacoCafes}"
+							th:text="${espacoCafe.nome}" th:value="${espacoCafe.id}" />
+					</select>
+				</div>
+				<div class="col">
+					<label for="espacoCafe2">Segundo intervalo</label> <select
+						name="espacoCafe2" class="form-control">
+						<option value="">Choose..</option>
+						<option th:each="espacoCafe: ${listaEspacoCafes}"
+							th:text="${espacoCafe.nome}" th:value="${espacoCafe.id}" />
+					</select>
+				</div>
+			</div>
+			
+			<p></p>
+
+			<button type="submit" class="btn btn-success">Salvar</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/listaPessoas}" class="btn btn-lin
+		k">Voltar</a>
+	</div>
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+</html>

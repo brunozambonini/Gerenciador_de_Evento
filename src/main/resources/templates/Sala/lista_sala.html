@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<title>Gerenciador de Salas</title>
+</head>
+<body>
+	<div class="container my-2">
+
+		<th:block th:include="/navbar"></th:block>
+
+		<h1>Lista de salas</h1>
+
+		<a th:href="@{/novaSalaForm}" class="btn btn-dark">Nova Sala</a>
+
+		<p>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Nome</th>
+					<th scope="col">Lotação</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="sala : ${listaSalas}">
+					<td th:text="${sala.nome}"></td>
+					<td th:text="${sala.lotacao}"></td>
+					<td style="width: 200px"><a
+						th:href="@{/sala/{id}(id=${sala.id})}" class="btn btn-success">
+							Atualizar </a> <a th:href="@{/deleteSala/{id}(id=${sala.id})}"
+						class="btn btn-danger"> Deletar </a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
