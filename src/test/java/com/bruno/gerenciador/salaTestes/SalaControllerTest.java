@@ -33,12 +33,12 @@ public class SalaControllerTest {
 	private PessoaRepository pessoaRepository;
 
 	@Test
-	void verificarSeRetornaOkAoChamarListaPessoasTeste() throws Exception {
+	void verificarSeRetornaOkAoChamarListaSalasTeste() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/listaSalas")).andExpect(status().isOk());
 	}
 
 	@Test
-	void verificarSeRetornaOkAoChamarNovaPessoaTeste() throws Exception {
+	void verificarSeRetornaOkAoChamarNovaSalaTeste() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/novaSalaForm")).andExpect(status().isOk());
 	}
 	

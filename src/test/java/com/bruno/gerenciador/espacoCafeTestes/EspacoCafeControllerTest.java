@@ -26,12 +26,12 @@ public class EspacoCafeControllerTest {
 	private EspacoCafeService espacoCafeService;
 
 	@Test
-	void verificarSeRetornaOkAoChamarListaPessoasTeste() throws Exception {
+	void verificarSeRetornaOkAoChamarListaEspacoCafesTeste() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/listaEspacoCafes")).andExpect(status().isOk());
 	}
 
 	@Test
-	void verificarSeRetornaOkAoChamarNovaPessoaTeste() throws Exception {
+	void verificarSeRetornaOkAoChamarNovaEspacoCafeTeste() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/novoEspacoCafeForm")).andExpect(status().isOk());
 	}
 	
