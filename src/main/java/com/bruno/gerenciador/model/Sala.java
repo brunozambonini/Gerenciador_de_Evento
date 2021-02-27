@@ -23,12 +23,23 @@ public class Sala {
 	@NotEmpty(message = "Nome não pode ser vazio")
 	private String nome;
 	
-	@NotBlank(message = "Lotação não pode ser em branco")
-	@NotEmpty(message = "Lotação não pode ser vazio")
 	private int lotacao;
 	
 	@OneToMany
     private List<Pessoa> pessoa;
+
+	public Sala() {
+		super();
+	}
+
+	public Sala(long id,
+			@NotBlank(message = "Nome não pode ser em branco") @NotEmpty(message = "Nome não pode ser vazio") String nome,
+			@NotBlank(message = "Lotação não pode ser em branco") @NotEmpty(message = "Lotação não pode ser vazio") int lotacao) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.lotacao = lotacao;
+	}
 	
 	public long getId() {
 		return id;

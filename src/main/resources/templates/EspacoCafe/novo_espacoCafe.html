@@ -35,6 +35,11 @@
 					type="number" class="form-control" id="formGroupExampleInput2"
 					th:field="*{lotacao}" placeholder="Lotação da espaço" required>
 			</div>
+			
+			<th:block th:include="/mensagem_validacao"></th:block>
+			
+			<p></p>
+			
 			<button type="submit" class="btn btn-success">Salvar</button>
 		</form>
 

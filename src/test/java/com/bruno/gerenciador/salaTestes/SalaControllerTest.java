@@ -1,7 +1,5 @@
-package com.bruno.gerenciador;
+package com.bruno.gerenciador.salaTestes;
 
-import static org.hamcrest.CoreMatchers.any;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -13,27 +11,18 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.bruno.gerenciador.controller.PessoaController;
-import com.bruno.gerenciador.model.EspacoCafe;
-import com.bruno.gerenciador.model.Pessoa;
-import com.bruno.gerenciador.model.Sala;
-import com.bruno.gerenciador.service.EspacoCafeService;
+import com.bruno.gerenciador.controller.SalaController;
+import com.bruno.gerenciador.repository.PessoaRepository;
 import com.bruno.gerenciador.service.PessoaService;
 import com.bruno.gerenciador.service.SalaService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = PessoaController.class)
-class PessoaControllerTest {
-
+@WebMvcTest(controllers = SalaController.class)
+public class SalaControllerTest {
+	
 	@Autowired
 	private MockMvc mockMvc;
-	
-	/*
-	@Autowired
-	private ObjectMapper objectMapper;
 
-*/
 	@MockBean
 	private PessoaService pessoaService;
 
@@ -41,15 +30,16 @@ class PessoaControllerTest {
 	private SalaService salaService;
 
 	@MockBean
-	private EspacoCafeService espacoCafeService;
+	private PessoaRepository pessoaRepository;
 
 	@Test
 	void verificarSeRetornaOkAoChamarListaPessoasTeste() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/listaPessoas")).andExpect(status().isOk());
+		mockMvc.perform(MockMvcRequestBuilders.get("/listaSalas")).andExpect(status().isOk());
 	}
 
 	@Test
 	void verificarSeRetornaOkAoChamarNovaPessoaTeste() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/novaPessoaForm")).andExpect(status().isOk());
-	}	
+		mockMvc.perform(MockMvcRequestBuilders.get("/novaSalaForm")).andExpect(status().isOk());
+	}
+	
 }

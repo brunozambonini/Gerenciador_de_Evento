@@ -1,12 +1,16 @@
 package com.bruno.gerenciador.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bruno.gerenciador.model.EspacoCafe;
 import com.bruno.gerenciador.service.EspacoCafeService;
@@ -35,7 +39,12 @@ public class EspacoCafeController {
 	
 	// 
 	@PostMapping("/salvarEspacoCafe")
-	public String salvarEspacoCafe(@ModelAttribute("espacoCafe") EspacoCafe espacoCafe) {
+	public String salvarEspacoCafe(@ModelAttribute("espacoCafe") @Valid EspacoCafe espacoCafe, BindingResult result, RedirectAttributes attributes) {
+		if(result.hasErrors()) {
+			 attributes.addFlashAttribute("mensagem","Verifique se os campos foram preenchidos corretamente!");
+			 return "redirect:/novoEspacoCafeForm";
+		 }
+		
 		espacoCafeService.saveEspacoCafe(espacoCafe);
 		return "redirect:/listaEspacoCafes";
 	}

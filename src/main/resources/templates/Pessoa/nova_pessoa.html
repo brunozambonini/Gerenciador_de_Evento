@@ -35,8 +35,9 @@
 					th:field="*{pessoa.sobrenome}" placeholder="Sobrenome" required>
 			</div>
 			<p>
-
-				<button type="submit" class="btn btn-success">Salvar</button>
+				<th:block th:include="/mensagem_validacao"></th:block>
+			<p></p>
+			<button type="submit" class="btn btn-success">Salvar</button>
 		</form>
 
 		<hr>
